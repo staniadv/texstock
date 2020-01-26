@@ -5,7 +5,7 @@ multiple = 8
 need_multiple = 1
 default_article_factor = 2
 
-with open("/home/stani/PycharmProjects/untitled2/ru/"
+with open("/home/stani/PycharmProjects/texstock/ru/"
           "textilstock/assortment/barcodes/generator/multiple_barcode_factor.csv", newline='') as f:
     reader = csv.reader(f)
     for row in reader:

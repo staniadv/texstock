@@ -31,6 +31,6 @@ def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_
             pass
 
 
-# generate_barcodes_template('polot.xls',
-#              '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-01-25T180900.442.xlsx',
-#                            barcode_csv_file)
+generate_barcodes_template('1.xls',
+             '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-01-25T180900.442.xlsx',
+                           barcode_csv_file)
