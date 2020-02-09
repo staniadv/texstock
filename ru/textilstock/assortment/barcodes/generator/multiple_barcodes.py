@@ -1,7 +1,7 @@
 import csv
 
 article_multiple_factor_dict = dict()
-multiple = 8
+DEFAULT_MULTIPLE_FACTOR = 8
 need_multiple = 1
 default_article_factor = 2
 
@@ -12,7 +12,7 @@ with open("/home/stani/PycharmProjects/texstock/ru/"
         article_multiple_factor_dict[row[0]] = int(row[1])
 
 
-def calc_repeat_dict_count(row):
+def calc_repeat_dict_count(row, multiple_factor):
     rc = int(row['cnt'])
     article = row['Артикул ИМТ']
 
@@ -21,7 +21,7 @@ def calc_repeat_dict_count(row):
         article_factor = article_multiple_factor_dict[article]
     rc = rc * article_factor
     if need_multiple == 1:
-        rc = (int(rc / multiple)) * multiple + min(rc % multiple, 1) * multiple
+        rc = (int(rc / multiple_factor)) * multiple_factor + min(rc % multiple_factor, 1) * multiple_factor
     return rc
 
 
@@ -44,12 +44,12 @@ def write_barcode_csv_for_jasper(rows, output_file):
                                  })
 
 
-def gen_and_write_barcodes(nomenclature_with_count_file_csv, out_file_csv):
+def gen_and_write_barcodes(nomenclature_with_count_file_csv, out_file_csv, multiple_factor = DEFAULT_MULTIPLE_FACTOR):
     with open(nomenclature_with_count_file_csv, newline='') as f:
         reader = csv.DictReader(f)
         result_rows = []
         for row in reader:
-            ret_count = calc_repeat_dict_count(row)
+            ret_count = calc_repeat_dict_count(row, multiple_factor)
             row['repeat_count'] = ret_count
             result_rows.append(row)
         write_barcode_csv_for_jasper(result_rows, out_file_csv)

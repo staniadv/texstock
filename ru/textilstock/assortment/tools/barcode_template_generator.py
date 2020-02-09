@@ -7,12 +7,12 @@ from ru.textilstock.assortment.djama.xls.join_detail_and_nomen import join_detai
 
 detalization_tmp_file = 'detalization.tmp.csv'
 detalization_with_nomen_tmp_file = 'details_with_nomen.tmp.csv'
-barcode_csv_file = 'barcodes.csv'
 
 REMOVE_TMP_FILES = True
 
 
-def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_file_csv):
+def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_file_csv,
+                               multiple_factor_factor):
     try:
         os.remove(barcodes_file_csv)
     except OSError:
@@ -21,7 +21,7 @@ def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_
     make_djama_detalization_tmp(detalization_file_csv, detalization_tmp_file)
     join_detail_with_nomen_and_write(detalization_tmp_file, nomen_file_xlsx,
                                      detalization_with_nomen_tmp_file)
-    gen_and_write_barcodes(detalization_with_nomen_tmp_file, barcodes_file_csv)
+    gen_and_write_barcodes(detalization_with_nomen_tmp_file, barcodes_file_csv, multiple_factor_factor)
 
     if REMOVE_TMP_FILES:
         try:
@@ -29,8 +29,3 @@ def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_
             os.remove(detalization_with_nomen_tmp_file)
         except OSError:
             pass
-
-
-generate_barcodes_template('1.xls',
-             '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-01-25T180900.442.xlsx',
-                           barcode_csv_file)

@@ -16,7 +16,7 @@ class BarcodeGenerationTest(unittest.TestCase):
 
         generate_barcodes_template(current_path + 'djama_detalization.xls',
                                    '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-01-25T180900.442.xlsx',
-                                   current_path + 'out1.csv')
+                                   current_path + 'out1.csv', 8)
         self.assertTrue(filecmp.cmp(current_path + 'out1.csv', current_path + 'expected1.csv'))
 
 

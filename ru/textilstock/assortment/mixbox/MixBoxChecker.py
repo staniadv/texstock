@@ -1,26 +1,26 @@
 def check_required_fields_filled(mixBox):
-    assert mixBox.supplier_name is not None
-    assert mixBox.brand is not None
-    assert mixBox.consignee is not None
-    assert mixBox.cargo_number is not None
-    assert mixBox.box_num is not None
-    assert mixBox.box_count is not None
-    assert mixBox.sum_items_count is not None
-    assert mixBox.items is not None
+    assert mixBox.supplier_name is not None, str(mixBox)
+    assert mixBox.brand is not None, str(mixBox)
+    assert mixBox.consignee is not None, str(mixBox)
+    assert mixBox.cargo_number is not None, str(mixBox)
+    assert mixBox.box_num is not None, str(mixBox)
+    assert mixBox.box_count is not None, str(mixBox)
+    assert mixBox.sum_items_count is not None, str(mixBox)
+    assert mixBox.items is not None, str(mixBox)
     assert len(mixBox.items) > 0
 
 
 def check_required_item_fields_filled(mixBoxItem):
-    assert mixBoxItem.order_num is not None
-    assert mixBoxItem.article is not None
-    assert mixBoxItem.item_category is not None
-    assert mixBoxItem.unit is not None
-    assert mixBoxItem.count is not None
+    assert mixBoxItem.order_num is not None, str(mixBoxItem)
+    assert mixBoxItem.article is not None, str(mixBoxItem)
+    assert mixBoxItem.item_category is not None, str(mixBoxItem)
+    assert mixBoxItem.unit is not None, str(mixBoxItem)
+    assert mixBoxItem.count is not None, str(mixBoxItem)
 
 
 def check_item_sum_count_with_box_sum_count(mixBox):
     sum_item_count = sum(item.count for item in mixBox.items)
-    assert sum_item_count == mixBox.sum_items_count
+    assert sum_item_count == mixBox.sum_items_count, "mixBox " + str(mixBox)
 
 
 def check_box_sequence_in_cargo(mixBoxes):

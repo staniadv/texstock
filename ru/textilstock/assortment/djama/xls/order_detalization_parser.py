@@ -42,4 +42,13 @@ def parse_order_detalization(filename):
     return order_details
 
 
+def parse_order_detalizations(filenames):
+    order_details = []
+    for filename in filenames:
+        order_details.extend(parse_order_detalization(filename))
+    return order_details
+
+
+# d = parse_order_detalizations(['1.xls', '2.xls'])
+# print(d)
 #make_djama_detalization_tmp('polot.xls', 'order_details_tmp.csv')

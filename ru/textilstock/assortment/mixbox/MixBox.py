@@ -19,9 +19,9 @@ class MixBox:
         self.items = items
 
     def __str__(self):
-        return 'MixBox(supplier_name=' + self.supplier_name + \
+        return 'MixBox(supplier_name=' + str(self.supplier_name) + \
                ', brand=' + str(self.brand) + \
-               ', consignee=' + self.consignee + \
+               ', consignee=' + str(self.consignee) + \
                ', cargo_number=' + str(self.cargo_number) + \
                ', box_num=' + str(self.box_num) + \
                ', box_count=' + str(self.box_count) + \
