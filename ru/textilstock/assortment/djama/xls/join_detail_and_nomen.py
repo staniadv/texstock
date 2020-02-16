@@ -22,7 +22,7 @@ def join_djama_detail_with_nomen(order_details_dataset, nomeclature_file_xlsx):
         print("articles NOT IN nomenclature in " + MAPPING_DJAMA_DETAIL_WILD_TO_NOMENCLATURE_FILE_CSV)
         print(skipped)
 
-    wild_nomen_dataset = pd.read_excel(nomeclature_file_xlsx)
+    wild_nomen_dataset = pd.read_excel(nomeclature_file_xlsx, skiprows=2)
 
     skipped = order_details_with_nomenclature.join(wild_nomen_dataset.set_index('Артикул поставщика'), on='nomenclature',
                                          how = 'left')
@@ -60,7 +60,6 @@ def join_detail_with_nomen_and_write(details_file_csv, nomeclature_file_xlsx, ou
 
 
 
-
 def j1():
     order_details = parse_order_detalizations(['1.xls', '2.xls'])
     data = []
@@ -68,19 +67,6 @@ def j1():
         data.append([order.article, order.count, order.price])
     df = pd.DataFrame(data=data, columns=['article', 'count', 'price'])
     detail_with_nomen_df = join_djama_detail_with_nomen(df, '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-01-25T180900.442.xlsx')
-
-
-#
-# def join1(order_details_df, nomeclature_df, detail_to_nomen_df):
-#     # print(order_details_df.groupby('article')['count'].sum().to_frame())
-#     od = order_details_df.groupby('article')['count'].sum().to_frame()
-#
-#     order_details_with_nomenclature = od.join(detail_to_nomen_df.set_index('article'),
-#                                               on='article', how='inner')
-#
-#     res = order_details_with_nomenclature.join(nomeclature_df.set_index('Артикул поставщика'), on='nomenclature')
-#
-#     print(res['count'])
 
 
 #join_detail_with_nomen_and_write('order_details_tmp.csv',
