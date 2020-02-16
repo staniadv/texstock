@@ -6,6 +6,7 @@ from ru.textilstock.assortment.tools.barcodegenerator.barcode_template_generator
 
 current_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 
+
 class BarcodeGenerationTest(unittest.TestCase):
 
     def test_barcode_generation_test(self):
