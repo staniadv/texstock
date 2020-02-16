@@ -2,7 +2,7 @@ import filecmp
 import os
 import unittest
 
-from ru.textilstock.assortment.tools.barcode_template_generator import generate_barcodes_template
+from ru.textilstock.assortment.tools.barcodegenerator.barcode_template_generator import generate_barcodes_template
 
 current_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 

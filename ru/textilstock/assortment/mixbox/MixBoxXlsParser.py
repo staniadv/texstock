@@ -1,6 +1,5 @@
 from openpyxl import load_workbook
 from ru.textilstock.assortment.mixbox.MixBox import MixBox, MixBoxItem
-from ru.textilstock.assortment.mixbox.MixBoxChecker import full_check
 
 
 def is_mix_box_start(row):
