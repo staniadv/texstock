@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report27" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="bffbd0bc-1f8d-47dc-86f8-758631caade4">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="8bdf91fd-c7b1-4fca-a1bc-a6751a5887d4">
+		<field name="порядковый номер" class="java.lang.String"/>
+		<field name="артикул" class="java.lang.String"/>
+		<field name="Предмет" class="java.lang.String"/>
+		<field name="едизм" class="java.lang.String"/>
+		<field name="Бренд" class="java.lang.String"/>
+		<field name="количество" class="java.lang.String"/>
+		<field name="код груза" class="java.lang.String"/>
+		<field name="всего коробов" class="java.lang.String"/>
+		<field name="номер короба" class="java.lang.String"/>
+		<group name="номер короба">
+			<groupExpression><![CDATA[$F{номер короба}]]></groupExpression>
+		</group>
+	</subDataset>
+	<field name="Предмет" class="java.lang.String"/>
+	<field name="едизм" class="java.lang.String"/>
+	<field name="количество" class="java.lang.Integer"/>
+	<field name="артикул" class="java.lang.String"/>
+	<field name="Бренд" class="java.lang.String"/>
+	<field name="код груза" class="java.lang.String"/>
+	<field name="всего коробов" class="java.lang.Integer"/>
+	<field name="номер короба" class="java.lang.Integer"/>
+	<field name="порядковый номер" class="java.lang.String"/>
+	<variable name="num_box_items_count" class="java.lang.Integer" resetType="Group" resetGroup="номер короба" calculation="Sum">
+		<variableExpression><![CDATA[$F{количество}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="box_count" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{номер короба}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="variable1" class="java.lang.String" resetType="Group" resetGroup="номер короба" calculation="Variance">
+		<variableExpression><![CDATA[$F{Предмет}]]></variableExpression>
+	</variable>
+	<group name="номер короба">
+		<groupExpression><![CDATA[$F{номер короба}]]></groupExpression>
+		<groupHeader>
+			<band height="160" splitType="Prevent">
+				<frame>
+					<reportElement x="4" y="128" width="551" height="32" uuid="12f23a95-2c50-4f0f-964f-86e62069dd83"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="1.25"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+					<textField>
+						<reportElement style="SubTitle" x="261" y="0" width="191" height="32" forecolor="#000000" uuid="a819b8a2-4af4-42fa-995e-00356a932064"/>
+						<textElement verticalAlignment="Middle">
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{номер короба} + " из " + $F{всего коробов}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<staticText>
+					<reportElement x="23" y="128" width="222" height="32" uuid="0396b72b-c013-4c63-a795-d6656a335d58"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[НОМЕР КОРОБА]]></text>
+				</staticText>
+				<frame>
+					<reportElement x="4" y="96" width="551" height="32" uuid="522aae47-c360-4ade-875d-39cbe5d71fc7"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="1.25"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+					<textField>
+						<reportElement style="SubTitle" x="121" y="0" width="191" height="32" forecolor="#000000" uuid="36f72811-f5ce-46a8-8b7f-42d910d6cd9e"/>
+						<textElement verticalAlignment="Middle">
+							<font size="14" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{код груза}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<staticText>
+					<reportElement x="21" y="96" width="104" height="32" uuid="668d9f69-f0a2-4ab9-b7d4-68e58bf10feb"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[КОД ГРУЗА: №]]></text>
+				</staticText>
+				<frame>
+					<reportElement x="4" y="0" width="551" height="32" uuid="760a697e-e6a0-4ccd-87af-d7f250caa105"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="1.25"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+					<staticText>
+						<reportElement x="20" y="0" width="77" height="32" uuid="2d9043f6-224f-498e-b70d-9e5151aa928c"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.0"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.0"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Middle">
+							<font fontName="Arial" size="14" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Поставщик: ]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="96" y="0" width="455" height="32" uuid="a0202979-2fcc-46a8-89a9-0d1e6a192e7d"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.0"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Middle">
+							<font fontName="Arial" size="14" isBold="true" isItalic="false"/>
+						</textElement>
+						<text><![CDATA[ ИП Алиев Т.Р.]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement x="4" y="32" width="551" height="32" uuid="b568db23-cd06-4c22-bbe4-b40d88aa916d"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="1.25"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+					<staticText>
+						<reportElement x="18" y="0" width="52" height="32" uuid="672f9b63-e723-4c17-8319-7ccdfa7916aa"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.0"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.0"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Middle">
+							<font fontName="Arial" size="14" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Марка: ]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="72" y="0" width="100" height="32" uuid="0a446b62-3e0f-435c-b325-1238a4626e0c"/>
+						<textElement textAlignment="Left" verticalAlignment="Middle">
+							<font fontName="Arial" size="14" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{Бренд}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement x="4" y="64" width="551" height="32" uuid="3ebb470b-f03e-4ced-a4f6-c2be96d4e827"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="1.25"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+				</frame>
+				<staticText>
+					<reportElement x="21" y="64" width="534" height="32" uuid="c337d98e-c26f-4e07-853d-3c9b77531ffd"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Грузополучатель: г.МОСКВА ООО "ВАЙЛДБЕРРИЗ"]]></text>
+				</staticText>
+			</band>
+			<band height="32" splitType="Prevent">
+				<frame>
+					<reportElement x="4" y="0" width="551" height="32" uuid="06bf95d3-9a2f-4f85-9619-470fa3b96259"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+					<staticText>
+						<reportElement x="0" y="0" width="35" height="32" uuid="3819e3ba-c2e0-467e-8991-5f27dcde5cdf"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[№]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="35" y="0" width="206" height="32" uuid="5e0e003b-7ab5-4ef6-94c4-47c3c1c15f5e"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Артикул]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="241" y="0" width="185" height="32" uuid="7302ba71-f6ab-4c1d-a58b-c91a6a57cf6f"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Наименование]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="426" y="0" width="75" height="32" uuid="0007218c-5267-4971-bee4-2daa926fe064"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Ед. изм]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="501" y="0" width="50" height="32" uuid="86356a78-cdfb-493f-a4d1-c84ef8f8566c"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Кол-во]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="73" splitType="Prevent">
+				<frame>
+					<reportElement x="4" y="0" width="551" height="32" uuid="6a7c8083-e421-40f2-83ce-a8dc5671299f"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+					<textField>
+						<reportElement x="501" y="0" width="50" height="32" uuid="54bcfbf5-1965-494a-8475-5333ad0d8e40"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{num_box_items_count}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="241" y="0" width="260" height="32" uuid="51d261d1-1258-40d3-9a3d-d77d8bafae0f"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[ИТОГО В КОРОБЕ]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="575" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="8" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="7" splitType="Prevent"/>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Prevent">
+			<textField>
+				<reportElement style="Detail" x="4" y="0" width="35" height="33" uuid="22539b82-f91a-4407-bee3-cf0dd0271dea"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{порядковый номер}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="430" y="0" width="75" height="33" uuid="5247ebae-fa2a-4140-830e-6d08f85f643e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{едизм}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="43" y="0" width="202" height="33" uuid="48bac7f3-9a10-4b1a-8358-5632dea60bd1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{артикул}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="245" y="0" width="185" height="33" uuid="d36e7504-4c89-41e1-9fd5-1d3b79716f5d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Предмет}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="4" y="1" width="551" height="32" uuid="743d8711-3adf-482e-a15b-10681cf718ee"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+			</frame>
+			<textField>
+				<reportElement style="Detail" x="505" y="0" width="50" height="32" uuid="38a5c05e-f44b-44ca-bcca-8826b530a869"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{количество}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="40" splitType="Prevent"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Prevent"/>
+	</summary>
+</jasperReport>

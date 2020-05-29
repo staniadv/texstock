@@ -34,7 +34,7 @@ def generate_detalizaion_supply_diff_csv(detalization_files_xlsx,
     df.to_csv(out_diff_file)
 
 
-# generate_detalizaion_supply_diff_csv(['detail2.xls'], '/home/stani/Загрузки/МИКС_feb_15.xlsx',
+# generate_detalizaion_supply_diff_csv(['detail.xls'], '/home/stani/Загрузки/МИКС_от_feb_22.xlsx',
 #                                      [1234, 1235],
-#                                      '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-01-25T180900.442.xlsx',
+#                                      '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-02-17T005733.041.xlsx',
 #                                      '3.csv')

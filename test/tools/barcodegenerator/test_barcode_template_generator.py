@@ -17,7 +17,7 @@ class BarcodeGenerationTest(unittest.TestCase):
 
         generate_barcodes_template(current_path + 'djama_detalization.xls',
                                    current_path + 'nomen.xlsx',
-                                   current_path + 'out1.csv', 8)
+                                   current_path + 'out1.csv', 8, 0)
         self.assertTrue(filecmp.cmp(current_path + 'out1.csv', current_path + 'expected1.csv'))
 
 

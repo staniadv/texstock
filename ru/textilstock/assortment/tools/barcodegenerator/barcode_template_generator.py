@@ -12,7 +12,7 @@ REMOVE_TMP_FILES = True
 
 
 def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_file_csv,
-                               multiple_factor_factor):
+                               multiple_factor_factor, extra_barcode_count = 1):
     try:
         os.remove(barcodes_file_csv)
     except OSError:
@@ -21,7 +21,8 @@ def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_
     make_djama_detalization_tmp(detalization_file_csv, detalization_tmp_file)
     join_detail_with_nomen_and_write(detalization_tmp_file, nomen_file_xlsx,
                                      detalization_with_nomen_tmp_file)
-    gen_and_write_barcodes(detalization_with_nomen_tmp_file, barcodes_file_csv, multiple_factor_factor)
+    gen_and_write_barcodes(detalization_with_nomen_tmp_file, barcodes_file_csv, multiple_factor_factor,
+                           extra_barcode_count)
 
     if REMOVE_TMP_FILES:
         try:

@@ -36,10 +36,11 @@ def compare_stocks(djama_stocks_xls, wildberries_stocks_xlsx, output_csv):
                                                        'Артикул поставщика',
                                                        'Подольск', 'Новосибирск', 'Хабаровск', 'Краснодар',
                                                        'Екатеринбург', 'Санкт-Петербург'])
-
     res['sum_all'] = res.fillna(0)['Подольск'] + res.fillna(0)['Новосибирск'] \
                      + res.fillna(0)['Хабаровск'] + res.fillna(0)['Краснодар'] + \
                      res.fillna(0)['Екатеринбург'] + res.fillna(0)['Санкт-Петербург']
+
+    res = res[(res['count'].isnull()) | (res['count'] > 0)]
 
     res = res.rename(columns={"count": "Остаток у Джамы", "article": "Артикул Джамы", "sum_all": "Остаток на складах"})
     res = res[['Артикул Джамы', 'Остаток у Джамы', 'nomenclature', 'Артикул поставщика',
@@ -50,6 +51,6 @@ def compare_stocks(djama_stocks_xls, wildberries_stocks_xlsx, output_csv):
     write_data_to_csv(res, output_csv)
 
 
-# compare_stocks('djama_stocks.xls',
-#                '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-02-17T003842.321.xlsx',
+# compare_stocks('/home/stani/Загрузки/остатки Байрамали (20).xls',
+#                '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-05-13T135717.330.xlsx',
 #                'out.csv')
