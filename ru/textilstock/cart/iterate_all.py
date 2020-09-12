@@ -5,16 +5,18 @@ import time
 import requests
 from lxml import html
 import re
-
+import pandas as pd
 
 # with open('/home/stani/1list.html', 'r') as myfile:
 #   html_file = myfile.read()
-from textilstock.cart.wlb import getNomenclature, wirteResToCsv
+from ru.textilstock.cart.wlb import getNomenclature, wirteResToCsv
 
 r = requests.get("https://www.wildberries.ru/brands/bayramali?pagesize=200")
 html_file = r.text
 
-
+# file = open('1.html', 'w')
+# file.write(html_file)
+# file.close()
 
 urls = re.findall("https[^\"]*detail.aspx[^\"]*", html_file)
 

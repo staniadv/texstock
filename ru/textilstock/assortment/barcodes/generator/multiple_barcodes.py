@@ -3,7 +3,7 @@ import csv
 article_multiple_factor_dict = dict()
 article_to_item_size_mapping = dict()
 article_to_item_name_mapping = dict()
-DEFAULT_MULTIPLE_FACTOR = 8
+DEFAULT_MULTIPLE_FACTOR = 1
 need_multiple = 1
 default_article_factor = 2
 
@@ -30,6 +30,10 @@ with open("/home/stani/PycharmProjects/texstock/ru/"
 def calc_repeat_dict_count(row, multiple_factor):
     rc = int(row['cnt'])
     article = row['Артикул ИМТ']
+
+    #hack for single barcode
+    if multiple_factor == 0:
+        return 1
 
     article_factor = default_article_factor
     if article in article_multiple_factor_dict:

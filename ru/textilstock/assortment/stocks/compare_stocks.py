@@ -51,6 +51,6 @@ def compare_stocks(djama_stocks_xls, wildberries_stocks_xlsx, output_csv):
     write_data_to_csv(res, output_csv)
 
 
-# compare_stocks('/home/stani/Загрузки/остатки Байрамали (20).xls',
-#                '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-05-13T135717.330.xlsx',
-#                'out.csv')
+compare_stocks('/home/stani/Загрузки/остатки Байрамали (31).xls',
+               '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-06-29T104240.625.xlsx',
+               'out.csv')

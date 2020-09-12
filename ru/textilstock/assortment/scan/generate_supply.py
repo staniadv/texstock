@@ -7,6 +7,8 @@ import os
 from ru.textilstock.assortment.scan.send_mail import send_jrpirnt_files
 
 
+current_path = os.path.dirname(os.path.abspath(__file__)) + '/'
+
 def get_scan_df(src_barcodes_file, boxes=[]):
     scan_df = pd.read_excel(src_barcodes_file)
     scan_df = scan_df[scan_df['номер короба'].notnull() | scan_df['Баркод'].notnull()]
@@ -37,10 +39,12 @@ def generate_supply(src_barcodes_file, nomen_file, supply_number, boxes=[]):
 
 
 def generate_single(src_barcodes_file, nomen_file, supply_number):
+    remove_ouput_files(current_path + '/output')
     generate_supply(src_barcodes_file, nomen_file, supply_number)
 
 
 def generate_selected(src_barcodes_file, nomen_file, box_sets):
+    remove_ouput_files(current_path + '/output')
     for supply_number, boxes in box_sets.items():
         generate_supply(src_barcodes_file, nomen_file, supply_number, boxes)
 
@@ -52,15 +56,26 @@ def make_inclusive_intervals(supplynum_to_boxes_sets_intervals):
     return supply_boxes_sets
 
 
-src_barcodes_file = '/home/stani/Загрузки/штрихи_2020-05-22 (4).xlsx'
-nomen_file = '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-05-22T223634.988.xlsx'
+def remove_ouput_files(folder):
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-supply_number = 1103646
+
+#src_barcodes_file = '/home/stani/Загрузки/barcode_scan_template_ozon.xlsx'
+src_barcodes_file = '/home/stani/Загрузки/barcode_111WB (1).xlsx'
+nomen_file = '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-09-02T225436.687.xlsx'
+
+supply_number = 1
 generate_single(src_barcodes_file, nomen_file, supply_number)
 
+#supplynum_to_boxes_sets_intervals = {1: [19, 25]}
+#supplynum_to_boxes_sets_intervals = {1: [1, 9]}
+#generate_selected(src_barcodes_file, nomen_file, make_inclusive_intervals(supplynum_to_boxes_sets_intervals))
 
-# supplynum_to_boxes_sets_intervals = {123: [1, 9], 124: [10, 18], 125: [19, 27]}
-# generate_selected(src_barcodes_file, nomen_file, make_inclusive_intervals(supplynum_to_boxes_sets_intervals))
-
-#Отправить jrxml на почту
+# Отправить jrxml на почту
 #send_jrpirnt_files()

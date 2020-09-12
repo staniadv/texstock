@@ -1,7 +1,9 @@
+import csv
 import re
 import json
-import csv
 import os
+
+import pandas as pd
 import requests
 
 # with open('/home/stani/1.html', 'r') as myfile:
@@ -46,7 +48,7 @@ def wirteResToCsv(res) :
     csv_columns = ['nomenclature', 'goodsName', 'color', 'priceWithSale', 'ordersCount', 'size', 'characteristicId']
 
     currentPath = os.getcwd()
-    csv_file = currentPath + "/csv/Names.csv"
+    csv_file = currentPath + "/csvfiles/Names.csv"
 
 
     for_csv_list = list()
@@ -65,12 +67,17 @@ def wirteResToCsv(res) :
     WriteDictToCSV(csv_file, csv_columns, for_csv_list)
 
 
-with open('/home/stani/1.html', 'r') as myfile:
-  src = myfile.read()
+# with open('1.html', 'r') as myfile:
+#   src = myfile.read()
 
-nomen = getNomenclature(src)
-print(nomen)
-wirteResToCsv(nomen)
+# nomen = getNomenclature(src)
+# print(nomen)
+
+
+#df = pd.DataFrame(nomen)
+#print(df)
+#df.to_excel('1.xlsx')
+#wirteResToCsv(nomen)
 
 
 

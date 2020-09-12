@@ -1,5 +1,7 @@
 import os
 
+import pandas as pd
+
 from ru.textilstock.assortment.barcodes.generator.multiple_barcodes import gen_and_write_barcodes
 from ru.textilstock.assortment.djama.xls.order_detalization_parser import make_djama_detalization_tmp
 
@@ -30,3 +32,17 @@ def generate_barcodes_template(detalization_file_csv, nomen_file_xlsx, barcodes_
             os.remove(detalization_with_nomen_tmp_file)
         except OSError:
             pass
+
+
+def repeat_rows(in_file_name, out_file_name):
+    df = pd.read_csv(in_file_name)
+    # Create an empty list
+    row_list = []
+    # Iterate over each row
+    for index, rows in df.iterrows():
+        # Create list for the current row
+        rc = rows['cnt'] + 4
+        for counter in range(rc):
+            row_list.append(rows)
+    df2 = pd.DataFrame(row_list)
+    df2.to_csv(out_file_name, index=False)

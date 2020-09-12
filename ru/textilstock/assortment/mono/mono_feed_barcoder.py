@@ -11,7 +11,7 @@ def write_data_to_csv(data_frame, output_file_csv):
 
 
 def generate_handbook_and_template(monofeed_xlsx, nomen_xlsx, barcodes_list_xlsx,
-                                   handbook_out_csv, template_out_csv):
+                                   handbook_out_csv, template_out_xlsx):
     mono_feed_df = pd.read_excel(monofeed_xlsx)
 
     wild_nomen_dataset = pd.read_excel(nomen_xlsx, skiprows=2)
@@ -39,9 +39,13 @@ def generate_handbook_and_template(monofeed_xlsx, nomen_xlsx, barcodes_list_xlsx
     wild_template_df['ШК короба'] = nomenclatured_df['box_barcode']
     wild_template_df['Кол-во коробок'] = 1
 
-    writer = pd.ExcelWriter(template_out_csv)
+    writer = pd.ExcelWriter(template_out_xlsx)
     wild_template_df.to_excel(writer, 'Лист1', index=False)
     writer.save()
 
 # generate_handbook_and_template('mono_feed.xlsx', 'nomen.xlsx', 'wildberries_barcodes_list.xlsx',
 #                                'out.csv', 'output.xlsx')
+
+generate_handbook_and_template('monofeed1.xlsx', '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-05-22T223634.988.xlsx',
+                               'wildberries_barcodes_list.xlsx',
+                               'out.csv', 'output.xlsx')
