@@ -22,7 +22,9 @@ barcode_csv_file = 'barcodes.csv'
 #                            barcode_csv_file, 8)
 
 #generate_barcodes_template('/home/stani/Загрузки/детализация заказа ИП Алиев ТР (58Полотенце 150 х210).xls', '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-06-03T023045.696.xlsx', barcode_csv_file, 1, 0)
-generate_barcodes_template('./detail0909.xls', '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-09-01T235115.196.xlsx', barcode_csv_file, 1, 0)
+#generate_barcodes_template('./detail2309.xls', '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-09-30T200829.011.xlsx', barcode_csv_file, 1, 0)
+#generate_barcodes_template('./detail0812.xls', '/home/stani/Загрузки/report_2020_11_29.XLSX', barcode_csv_file, 1, 0)
+generate_barcodes_template('detail2112.xls', '/home/stani/Загрузки/report_2020_12_15 (1).XLSX', barcode_csv_file, 1, 0)
 
 #generate_barcodes_template('./detail2108.xls', '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-08-19T131924.801.xlsx', barcode_csv_file, 1, 0)
 
@@ -40,7 +42,4 @@ generate_barcodes_template('./detail0909.xls', '/home/stani/Загрузки/Exp
 # writeDefBoxesToExcel(groupped)
 
 
-
-
-repeat_rows('Описание для этикетки 2.csv', 'out.csv')
-
+#repeat_rows('/home/stani/Загрузки/нат_наклейки/заказ этикеток от 26.11.csv', 'out.csv')

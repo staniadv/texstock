@@ -22,7 +22,11 @@ def join_djama_detail_with_nomen(order_details_dataset, nomeclature_file_xlsx):
         print("articles NOT IN nomenclature in " + MAPPING_DJAMA_DETAIL_WILD_TO_NOMENCLATURE_FILE_CSV)
         print(skipped)
 
-    wild_nomen_dataset = pd.read_excel(nomeclature_file_xlsx, skiprows=2)
+    wild_nomen_dataset = pd.read_excel(nomeclature_file_xlsx, skiprows=0)
+
+    wild_nomen_dataset = wild_nomen_dataset.rename(columns={"Артикул поставщика": "Артикул поставщика new"})
+    wild_nomen_dataset = wild_nomen_dataset.rename(columns={"Артикул ИМТ": "Артикул поставщика"})
+    wild_nomen_dataset = wild_nomen_dataset.rename(columns={"Артикул поставщика new": "Артикул ИМТ"})
 
     skipped = order_details_with_nomenclature.join(wild_nomen_dataset.set_index('Артикул поставщика'), on='nomenclature',
                                          how = 'left')
@@ -32,7 +36,7 @@ def join_djama_detail_with_nomen(order_details_dataset, nomeclature_file_xlsx):
         print(skipped)
 
     res = order_details_with_nomenclature.join(wild_nomen_dataset.set_index('Артикул поставщика'), on='nomenclature')
-    barcodes_to_exclude_df = pd.read_csv(EXCLUDE_BARCODES_FILE)
+    barcodes_to_exclude_df = pd.read_csv(EXCLUDE_BARCODES_FILE, dtype=str)
     barcodes_to_exclude = list(barcodes_to_exclude_df.to_dict()['barcode'].values())
 
     # filter fields

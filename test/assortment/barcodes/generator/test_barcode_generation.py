@@ -15,7 +15,7 @@ class BarcodeGenerationTest(unittest.TestCase):
         except OSError:
             pass
 
-        gen_and_write_barcodes(current_path + 'barcode_data.csv', current_path + 'out1.csv')
+        gen_and_write_barcodes(current_path + 'barcode_data.csv', current_path + 'out1.csv', multiple_factor=8)
         self.assertTrue(filecmp.cmp(current_path + 'out1.csv', current_path + 'expected1.csv'))
 
 

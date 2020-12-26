@@ -47,7 +47,7 @@ def calc_repeat_dict_count(row, multiple_factor):
 def write_barcode_csv_for_jasper(rows, output_file):
     with open(output_file, 'w', newline='') as csvfile:
         fieldnames = ['cnt', 'repeat_count', 'Артикул ИМТ', 'Бренд', 'Предмет',
-                      'Артикул Цвета', 'Баркод', 'Размер']
+                      'Артикул Цвета', 'Баркод', 'Размер', 'Размер_WLB']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for row in rows:
@@ -65,7 +65,8 @@ def write_barcode_csv_for_jasper(rows, output_file):
                                  'Предмет': name or row['Предмет'],
                                  'Артикул Цвета': row['Артикул Цвета'],
                                  'Баркод': row['Баркод'],
-                                 'Размер': item_size
+                                 'Размер': item_size,
+                                 'Размер_WLB': row['Размер']
                                  })
 
 

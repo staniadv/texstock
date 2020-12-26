@@ -17,7 +17,11 @@ def items_to_deficit(scan_df, nomen_file, supply_number):
     scan_groupped = scan_df.groupby(["Баркод"]).size().to_frame('count')
     scan_groupped = scan_groupped.reset_index()
 
-    nomen_df = pd.read_excel(nomen_file, skiprows=2)
+    #nomen_df = pd.read_excel(nomen_file, skiprows=2)
+    nomen_df = pd.read_excel(nomen_file)
+    nomen_df = nomen_df[nomen_df['Баркод'].notnull()]
+    nomen_df = nomen_df[nomen_df['Баркод'].str.isnumeric()]
+    nomen_df = nomen_df.astype({'Баркод': 'int64'})
 
     grp_with_nomen = pd.merge(scan_groupped, nomen_df,
                               how='left', left_on=['Баркод'],

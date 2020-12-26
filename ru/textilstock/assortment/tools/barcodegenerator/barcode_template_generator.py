@@ -41,7 +41,7 @@ def repeat_rows(in_file_name, out_file_name):
     # Iterate over each row
     for index, rows in df.iterrows():
         # Create list for the current row
-        rc = rows['cnt'] + 4
+        rc = rows['cnt'] + 2
         for counter in range(rc):
             row_list.append(rows)
     df2 = pd.DataFrame(row_list)

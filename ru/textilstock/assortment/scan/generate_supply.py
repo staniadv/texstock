@@ -67,8 +67,10 @@ def remove_ouput_files(folder):
 
 
 #src_barcodes_file = '/home/stani/Загрузки/barcode_scan_template_ozon.xlsx'
-src_barcodes_file = '/home/stani/Загрузки/barcode_111WB (1).xlsx'
-nomen_file = '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-09-02T225436.687.xlsx'
+src_barcodes_file = '/home/stani/Загрузки/barcode_scan_template (41).xlsx'
+#nomen_file = '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-09-30T200829.011.xlsx'
+nomen_file = '/home/stani/Загрузки/report_2020_11_29.XLSX'
+#nomen_file = '/home/stani/Загрузки/report_2020_10_25_1.XLSX'
 
 supply_number = 1
 generate_single(src_barcodes_file, nomen_file, supply_number)

@@ -21,7 +21,6 @@ def add_box_barcodes(boxes_file, barcodes_file):
     barcodes = pd.read_excel(barcodes_file, header=None)
     barcodes['ШК короба'] = barcodes.get(0)
     barcodes['rn'] = barcodes.index + 1
-    labeled_boxes.to_csv('aa.csv')
     boxes_with_barcodes = pd.merge(labeled_boxes, barcodes,
                                    how='left', left_on=['номер короба'],
                                    right_on=['rn']
@@ -40,5 +39,4 @@ def add_box_barcodes(boxes_file, barcodes_file):
     barcodes.to_excel(current_path + 'output_barcodes/mapping.xlsx', index=False, header=False)
 
 
-add_box_barcodes('output/1.csv', '/home/stani/Загрузки/barcodes (12).xlsx')
-
+add_box_barcodes('output/1.csv', '/home/stani/Загрузки/barcodes (18).xlsx')
