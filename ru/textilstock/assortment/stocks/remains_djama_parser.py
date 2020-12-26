@@ -4,7 +4,7 @@ from ru.textilstock.core.xls.XlsUtils import open_xls_as_xlsx
 
 def parse_djama_stocks(filename):
     wb = open_xls_as_xlsx(filename)
-    ws = wb.get_sheet_by_name('Sheet')
+    ws = wb['Sheet']
     result = []
     for row in ws.iter_rows():
         if "(itu)" in row[0].value:

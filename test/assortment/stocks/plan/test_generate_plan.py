@@ -24,11 +24,11 @@ class CheckGenerateStocksPlanTest(unittest.TestCase):
         for plan in article_plans:
             generate_orders(current_path + '/input/' + plan,
                             current_path + '/input/' + djama_stocks_file,
-                            'order_' + plan)
+                            current_path + '/output/' + 'order_' + plan)
             print("-------------------")
 
         expected = pd.read_excel(current_path + 'expected.xlsx')
-        actual = pd.read_excel(current_path + 'output/order_article_plan.xlsx')
+        actual = pd.read_excel(current_path + '/output/order_article_plan.xlsx')
 
         self.assertTrue(actual.equals(expected))
 

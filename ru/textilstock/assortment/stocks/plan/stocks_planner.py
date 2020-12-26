@@ -123,7 +123,7 @@ def generate_orders(article_plan_src, djama_stocks_file, out_xlsx_file):
     print("Total sum: " + str(djama_article_order_df['Сумма'].sum()))
 
     #пишем xlsx
-    with pd.ExcelWriter('output/' + out_xlsx_file) as writer:
+    with pd.ExcelWriter(out_xlsx_file) as writer:
         djama_article_order_df.to_excel(writer, sheet_name='Поставка Джама')
         article_order_df.to_excel(writer, sheet_name='Артикулы для склада')
 

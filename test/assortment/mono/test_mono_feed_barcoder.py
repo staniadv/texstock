@@ -7,9 +7,9 @@ from ru.textilstock.assortment.mono.mono_feed_barcoder import generate_handbook_
 current_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 
 
-class CheckSupplyCountsTest(unittest.TestCase):
+class TestMonoFeedBarcoder(unittest.TestCase):
 
-    def test_check_supply_count(self):
+    def test_monfeed_barcoder(self):
         try:
             os.remove(current_path + 'out1.csv')
         except OSError:

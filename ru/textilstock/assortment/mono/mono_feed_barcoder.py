@@ -46,6 +46,6 @@ def generate_handbook_and_template(monofeed_xlsx, nomen_xlsx, barcodes_list_xlsx
 # generate_handbook_and_template('mono_feed.xlsx', 'nomen.xlsx', 'wildberries_barcodes_list.xlsx',
 #                                'out.csv', 'output.xlsx')
 
-generate_handbook_and_template('monofeed1.xlsx', '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-05-22T223634.988.xlsx',
-                               'wildberries_barcodes_list.xlsx',
-                               'out.csv', 'output.xlsx')
+# generate_handbook_and_template('monofeed1.xlsx', '/home/stani/Загрузки/ExportToEXCELOPENXML - 2020-05-22T223634.988.xlsx',
+#                                'wildberries_barcodes_list.xlsx',
+#                                'out.csv', 'output.xlsx')
